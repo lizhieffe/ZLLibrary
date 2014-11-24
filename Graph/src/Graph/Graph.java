@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import Interface.IStrongConnectedComponentsDetecter;
+import Interface.IStrongConnectedComponentsDetector;
 
 public class Graph <T> {
 	private List<Vertex<T>> vertice;
 	private Map<Vertex<T>, List<Vertex<T>>> outwardEdges;
 	private Map<Vertex<T>, List<Vertex<T>>> inwardEdges;
 	
-	IStrongConnectedComponentsDetecter <T> sccDetecter;
+	IStrongConnectedComponentsDetector <T> sccDetecter;
 	
 	public Graph () {
 		this.vertice = new ArrayList<Vertex<T>>();
@@ -101,7 +101,7 @@ public class Graph <T> {
 		}
 	}
 	
-	public void setStrongConnectedComponentsDetecter(IStrongConnectedComponentsDetecter<T> detecter) {
+	public void setStrongConnectedComponentsDetecter(IStrongConnectedComponentsDetector<T> detecter) {
 		this.sccDetecter = detecter;
 	}
 	

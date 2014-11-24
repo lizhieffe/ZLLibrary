@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import Interface.IStrongConnectedComponentsDetecter;
+import Interface.IStrongConnectedComponentsDetector;
 
-public class StrongConnectedComponentsDetecterTarjanImpl <T> implements IStrongConnectedComponentsDetecter <T> {
+public class StrongConnectedComponentsDetectorTarjanImpl <T> implements IStrongConnectedComponentsDetector <T> {
 
 	List<Vertex<T>> vertice;
 	int[] color;
@@ -89,7 +89,7 @@ public class StrongConnectedComponentsDetecterTarjanImpl <T> implements IStrongC
 		graph.connect(v4, v1);
 		graph.connect(v4, v6);
 		graph.connect(v5, v6);
-		graph.setStrongConnectedComponentsDetecter(new StrongConnectedComponentsDetecterTarjanImpl<Integer>());
+		graph.setStrongConnectedComponentsDetecter(new StrongConnectedComponentsDetectorTarjanImpl<Integer>());
 		graph.getStrongConnectedComponents();
 	}
 }

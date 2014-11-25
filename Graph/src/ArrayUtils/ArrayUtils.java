@@ -8,7 +8,7 @@ import Interface.IKthLargestElementFinder;
  */
 public class ArrayUtils {
 	
-	public long maxProductSubarray (long[] array) {
+	public static long maxProductSubarray (long[] array) {
 		if (array == null || array.length == 0)
 			return 1;
 		long result = array[0];

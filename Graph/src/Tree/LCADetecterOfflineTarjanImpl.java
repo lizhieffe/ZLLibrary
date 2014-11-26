@@ -8,25 +8,25 @@ import java.util.Map;
 import DisjointSets.DisjointSets;
 import Interface.ILCADetector;
 
-public class LCADetecterOfflineTarjanImpl<T> implements ILCADetector<T>{
+public class LCADetecterOfflineTarjanImpl implements ILCADetector{
 
-	TreeNode<T> root;
+	TreeNode root;
 	private boolean preprocessed = false;
 	Map<Integer, Map<Integer, Integer>> LCARelations 
 			= new HashMap<Integer, Map<Integer, Integer>>();
-	List<TreeNode<T>> treeNodes = null;
+	List<TreeNode> treeNodes = null;
 	List<Boolean> visit = null;
 	DisjointSets<Integer> disjointSets = new DisjointSets<Integer>();
 	
 	@Override
-	public void setTreeRoot(TreeNode<T> graph) {
+	public void setTreeRoot(TreeNode graph) {
 		this.root = graph;
 		this.preprocessed = false;
 		LCARelations.clear();
 	}
 
 	@Override
-	public TreeNode<T> detect(TreeNode<T> v1, TreeNode<T> v2) {
+	public TreeNode detect(TreeNode v1, TreeNode v2) {
 		if (root == null)
 			return null;
 		if (!this.preprocessed)
@@ -51,14 +51,14 @@ public class LCADetecterOfflineTarjanImpl<T> implements ILCADetector<T>{
 	
 	private void tarjan(int index) {
 		this.disjointSets.makeSet(index);
-		List<TreeNode<T>> children = this.treeNodes.get(index).getChildren();
-		for (TreeNode<T> child : children) {
+		List<TreeNode> children = this.treeNodes.get(index).getChildren();
+		for (TreeNode child : children) {
 			int childIndex = this.treeNodes.indexOf(child);
 			tarjan(childIndex);
 			this.disjointSets.union(index, childIndex);
 		}
 		this.visit.set(index, true);
-		for (TreeNode<T> child : this.treeNodes) {
+		for (TreeNode child : this.treeNodes) {
 			int childIndex = this.treeNodes.indexOf(child);
 			if (this.visit.get(childIndex) == true)
 				setLCA(index, childIndex, this.disjointSets.find(childIndex));
